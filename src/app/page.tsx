@@ -1,32 +1,37 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
 import { fabric } from 'fabric';
-import { responseOne } from "@/data/data";
+import { responseData } from "@/data/data";
 
 export default function Home() {
   const [canvas, setCanvas] = useState<fabric.Canvas>();
-  const options = responseOne.data.printFileData.options;
-  const variant_mapping = responseOne.data.templateData.variant_mapping;
-  const templates = responseOne.data.templateData.templates;
+  const templates = responseData.templateData.templates;
+  const printFiles = responseData.printFileData.printfiles;
+  const variantMapping = responseData.templateData.variant_mapping;
+  const [file, setFile] = useState<FileList | null>(null)
+  const [url, setUrl] = useState<string | null>(null)
+  const currentImage = useRef<any>(null)
+  const currentPrintArea = useRef<any>(null)
+  const [currentTemplateInfo, setCurrentTemplateInfo] = useState<any>(null)
+  console.log("🚀 => Home => file:", file)
+
+  const availablePlacements = Object.entries(responseData.printFileData.available_placements)
   const [config, setConfig] = useState({
     color: 'Black',
-    placement: "Front"
+    placement: 'front'
   })
-
-
-
   useEffect(() => {
-    console.log("🚀 => useEffect => config:", config)
-    const currentVariant = variant_mapping.find(variant => variant.color === config.color);
+    const currentVariant = variantMapping?.find(v => v.color === config.color)
     console.log("🚀 => useEffect => currentVariant:", currentVariant)
-    const currentTemplate = currentVariant?.templates.find(template => template.placement.toLocaleLowerCase() === config.placement.toLocaleLowerCase());
+    const currentTemplate = currentVariant?.templates?.find(t => t.placement === config.placement)
     console.log("🚀 => useEffect => currentTemplate:", currentTemplate)
-    const currentTemplateInfo = templates?.find(template => template.template_id === currentTemplate?.template_id);
-    console.log("🚀 => useEffect => currentTemplateInfo:", currentTemplateInfo)
+    const templateInfo = templates?.find(t => t.template_id === currentTemplate?.template_id);
+    console.log("🚀 => useEffect => templateInfo:", templateInfo)
+    setCurrentTemplateInfo(templateInfo);
     const c = new fabric.Canvas("canvas", {
-      height: currentTemplateInfo?.template_height,
-      width: currentTemplateInfo?.template_width,
-      backgroundColor: "white",
+      height: (templateInfo?.template_height || 1000) * 0.75,
+      width: (templateInfo?.template_width || 1000) * 0.75,
+      backgroundColor: "black",
     });
 
     // settings for all canvas in the app
@@ -36,56 +41,102 @@ export default function Home() {
     fabric.Object.prototype.cornerStrokeColor = "#2BEBC8";
     fabric.Object.prototype.cornerSize = 6;
 
-    fabric.Image.fromURL(currentTemplateInfo?.image_url || '', function (img) {
-      c.clear()
-      if(c?.width && c?.height && img?.width && img?.height){
-        c.setBackgroundImage(img, c.renderAll.bind(c), {
-          // Adjust options as needed
-          scaleX: 1,
-          scaleY: 1
-        });
-      }
+    fabric.Image.fromURL(templateInfo?.image_url || '', function (img) {
+      img.scale(0.75)
+      // Adjust the image properties as needed
+      img.set({
+        selectable: false, // Make the image not selectable
+        evented: false, // Make the image not trigger events
+      });
+      c.add(img); // Add the image to the canvas
     });
+    addRect({
+      canvas: c, 
+      width: (templateInfo?.print_area_width || 0) * 0.75, 
+      height: (templateInfo?.print_area_height || 0) * 0.75, 
+      left: (templateInfo?.print_area_left || 0) * 0.75,
+      top: (templateInfo?.print_area_top || 0) * 0.75
+    })
+  setCanvas(c);
 
-    setCanvas(c);
+  return () => {
+    c.dispose();
+  };
+}, [config]);
 
-    return () => {
-      c.dispose();
-    };
-  }, [config]);
+useEffect(() => {
+  canvas?.remove(currentImage.current);
+  fabric.Image.fromURL(url || '', (img) => {
+    img.scale(0.75);
+    img.set({
+      left: currentTemplateInfo?.print_area_left * 0.75,
+      top: currentTemplateInfo?.print_area_top * 0.75,
+    })
+    canvas?.add(img)
+    canvas?.sendToBack(img)
+    currentImage.current = img;
+  })
+}, [url])
 
-  return <div className="w-full h-screen grid grid-cols-4 gap-4" >
-    <div className="h-screen w-full flex items-center col-span-3 justify-center border bg-black">
+const addRect = ({ canvas, width, height, left, top }: { canvas: fabric.Canvas, width: number, height: number, left: number, top: number }) => {
+  const rect = new fabric.Rect({
+    left,
+    height,
+    width,
+    top,
+    stroke: "#2BEBC8",
+    selectable: false,
+    evented: false,
+    strokeWidth: 2,
+    fill: 'rgba(0, 0, 0, 0)',
+  });
+  canvas?.add(rect);
+  canvas?.requestRenderAll();
+  currentPrintArea.current = rect
+};
+
+return <div className="w-full h-screen grid grid-cols-2 gap-2" >
+  <div className="flex items-center justify-center bg-black">
+    <div>
       <canvas id="canvas" />
     </div>
-    <div className="py-4 flex flex-wrap gap-2 items-start justify-start">
-      <div className="w-full flex flex-wrap gap-2 items-center">
+  </div>
+  <div >
+    <div className="w-full flex items-start justify-start flex-wrap py-3 gap-2">
+      <div className="w-full flex gap-2 items-center">
         <p>Options: </p>
         {
-          options.map(option => {
-            return <button
-              key={option}
-              onClick={() => setConfig({ ...config, placement: option })}
-              className="border bg-black text-white py-1 px-3 rounded">
-              {option}
-            </button>
+          availablePlacements.map(place => {
+            return <button className="border rounded-md p-2 px-3" onClick={() => {
+              console.log(place[0])
+              setConfig({ ...config, placement: place[0] })
+            }} key={place[0]}>{place[1]}</button>
           })
         }
       </div>
-
-      <div className="w-full flex flex-wrap gap-2 items-center">
-        <p>Color: </p>
+      <div className="w-full flex gap-2 items-center">
+        <p>Colors: </p>
         {
-          variant_mapping.map(variant => {
-            return <button
-              key={variant.variant_id}
-              onClick={() => setConfig({ ...config, color: variant.color })}
-              className="border bg-black text-white py-1 px-3 rounded">
-              {variant.color}
-            </button>
+          variantMapping.map(variant => {
+            return <button className="border rounded-md p-2 px-3" onClick={() => {
+              console.log(variant.color)
+              setConfig({ ...config, color: variant.color })
+            }}>{variant.color}</button>
           })
         }
+      </div>
+      <div className="w-full flex gap-2 items-center">
+        <input type="file" onChange={(e) => {
+          setFile(e.currentTarget.files)
+          if (e?.currentTarget?.files?.[0]) { setUrl(URL.createObjectURL(e.currentTarget.files[0])) }
+        }} />
+
+      </div>
+      <div className="w-full flex gap-2 items-center">
+        <p>Upload Images: </p>
+        {!!file && <img className="w-100 h-100" src={url || ''} />}
       </div>
     </div>
-  </div>;
+  </div>
+</div>;
 }
