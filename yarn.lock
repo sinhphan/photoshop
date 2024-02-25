@@ -669,7 +669,7 @@ caniuse-lite@^1.0.30001578, caniuse-lite@^1.0.30001579, caniuse-lite@^1.0.300015
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001589.tgz"
   integrity sha512-vNQWS6kI+q6sBlHbh71IIeC+sRwK2N3EDySc/updIGhIee2x5z00J4c1242/5/d6EpEMdOnk/m+6tuk4/tcsqg==
 
-canvas@^2.11.2, canvas@^2.8.0:
+canvas@^2.8.0:
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/canvas/-/canvas-2.11.2.tgz#553d87b1e0228c7ac0fc72887c3adbac4abbd860"
   integrity sha512-ItanGBMrmRV7Py2Z+Xhs7cT+FNt5K0vPL4p9EZ/UX/Mu7hFbkxSjKF2KVtPwX7UYWp7dRKnrTvReflgrItJbdw==
@@ -1969,11 +1969,6 @@ keyv@^4.5.3:
   integrity sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==
   dependencies:
     json-buffer "3.0.1"
-
-konva@^9.3.3:
-  version "9.3.3"
-  resolved "https://registry.yarnpkg.com/konva/-/konva-9.3.3.tgz#b4e719c287fd8ffa88360e25e2fd3201d6896f7a"
-  integrity sha512-cg/AHxnfawZ1rKxygCnzx0TZY7hQiQiAKgAHPinEwMn49MVrBkeKLj2d0EaleoFG/0y0XhEKTD0dFZiPPdWlCQ==
 
 language-subtag-registry@^0.3.20:
   version "0.3.22"

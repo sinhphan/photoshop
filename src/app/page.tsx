@@ -1,37 +1,39 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
 import { fabric } from 'fabric';
-import { responseData } from "@/data/data";
+import { responseData, responseData2 } from "@/data/data";
+import { useDesign } from "@/hook/useDesign";
 
 export default function Home() {
+  const data = responseData2
   const [canvas, setCanvas] = useState<fabric.Canvas>();
-  const templates = responseData.templateData.templates;
-  const printFiles = responseData.printFileData.printfiles;
-  const variantMapping = responseData.templateData.variant_mapping;
+  const templates = data.templateData.templates;
+  const printFiles = data.printFileData.printfiles;
+  const variantMapping = data.templateData.variant_mapping;
   const [file, setFile] = useState<FileList | null>(null)
   const [url, setUrl] = useState<string | null>(null)
   const currentImage = useRef<any>(null)
   const currentPrintArea = useRef<any>(null)
   const [currentTemplateInfo, setCurrentTemplateInfo] = useState<any>(null)
-  console.log("🚀 => Home => file:", file)
+  const [ ratio, setRatio] = useState(0.75)
 
-  const availablePlacements = Object.entries(responseData.printFileData.available_placements)
+  const availablePlacements = Object.entries(data.printFileData.available_placements)
   const [config, setConfig] = useState({
     color: 'Black',
-    placement: 'front'
+    placement: 'front',
+    color_code: '#000000',
   })
   useEffect(() => {
     const currentVariant = variantMapping?.find(v => v.color === config.color)
-    console.log("🚀 => useEffect => currentVariant:", currentVariant)
     const currentTemplate = currentVariant?.templates?.find(t => t.placement === config.placement)
-    console.log("🚀 => useEffect => currentTemplate:", currentTemplate)
     const templateInfo = templates?.find(t => t.template_id === currentTemplate?.template_id);
-    console.log("🚀 => useEffect => templateInfo:", templateInfo)
     setCurrentTemplateInfo(templateInfo);
+    const currentRatio = 750/(templateInfo?.template_width || 750);
+    setRatio(currentRatio)
     const c = new fabric.Canvas("canvas", {
-      height: (templateInfo?.template_height || 1000) * 0.75,
-      width: (templateInfo?.template_width || 1000) * 0.75,
-      backgroundColor: "black",
+      height: (templateInfo?.template_height || 1000) * currentRatio,
+      width: (templateInfo?.template_width || 1000) * currentRatio,
+      backgroundColor: config.color_code,
     });
 
     // settings for all canvas in the app
@@ -50,15 +52,7 @@ export default function Home() {
       });
       c.add(img); // Add the image to the canvas
     });
-    addRect({
-      canvas: c, 
-      width: (templateInfo?.print_area_width || 0) * 0.75, 
-      height: (templateInfo?.print_area_height || 0) * 0.75, 
-      left: (templateInfo?.print_area_left || 0) * 0.75,
-      top: (templateInfo?.print_area_top || 0) * 0.75
-    })
   setCanvas(c);
-
   return () => {
     c.dispose();
   };
@@ -67,18 +61,41 @@ export default function Home() {
 useEffect(() => {
   canvas?.remove(currentImage.current);
   fabric.Image.fromURL(url || '', (img) => {
-    img.scale(0.75);
+    img.scale(ratio);
     img.set({
-      left: currentTemplateInfo?.print_area_left * 0.75,
-      top: currentTemplateInfo?.print_area_top * 0.75,
+      left: currentTemplateInfo?.print_area_left * ratio,
+      top: currentTemplateInfo?.print_area_top * ratio,
+      clipPath: new fabric.Rect({
+        absolutePositioned: true,
+        width: (currentTemplateInfo?.print_area_width || 0) * ratio, 
+        height: (currentTemplateInfo?.print_area_height || 0) * ratio, 
+        left: (currentTemplateInfo?.print_area_left || 0) * ratio,
+        top: (currentTemplateInfo?.print_area_top || 0) * ratio
+      }),
+    })
+
+    addRect({
+      canvas: canvas,
+      width: (currentTemplateInfo?.print_area_width || 0) * ratio, 
+      height: (currentTemplateInfo?.print_area_height || 0) * ratio, 
+      left: (currentTemplateInfo?.print_area_left || 0) * ratio,
+      top: (currentTemplateInfo?.print_area_top || 0) * ratio
+    })
+    
+    img.on("selected",()=>{
+      currentPrintArea.current.visible = true
+    })
+
+    img.on("deselected",()=>{
+      currentPrintArea.current.visible = false
     })
     canvas?.add(img)
-    canvas?.sendToBack(img)
+    canvas?.requestRenderAll()
     currentImage.current = img;
   })
 }, [url])
 
-const addRect = ({ canvas, width, height, left, top }: { canvas: fabric.Canvas, width: number, height: number, left: number, top: number }) => {
+const addRect = ({ canvas, width, height, left, top }: { canvas?: fabric.Canvas, width: number, height: number, left: number, top: number }) => {
   const rect = new fabric.Rect({
     left,
     height,
@@ -90,9 +107,11 @@ const addRect = ({ canvas, width, height, left, top }: { canvas: fabric.Canvas, 
     strokeWidth: 2,
     fill: 'rgba(0, 0, 0, 0)',
   });
+  rect.visible = false
   canvas?.add(rect);
   canvas?.requestRenderAll();
   currentPrintArea.current = rect
+  return rect
 };
 
 return <div className="w-full h-screen grid grid-cols-2 gap-2" >
@@ -120,7 +139,7 @@ return <div className="w-full h-screen grid grid-cols-2 gap-2" >
           variantMapping.map(variant => {
             return <button className="border rounded-md p-2 px-3" onClick={() => {
               console.log(variant.color)
-              setConfig({ ...config, color: variant.color })
+              setConfig({ ...config, color: variant.color, color_code: variant?.color_code || '' })
             }}>{variant.color}</button>
           })
         }

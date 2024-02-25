@@ -633,6 +633,7 @@ export const data = {
           },
           {
             "color": "Navy",
+            "color_code": "#333366",
             "templates": [
               {
                 "placement": "front",
@@ -655,6 +656,7 @@ export const data = {
           },
           {
             "color": "Red",
+            "color_code": "#CC3333",
             "templates": [
               {
                 "placement": "front",
@@ -1426,7 +1428,7 @@ export const data = {
         "version": 100,
         "templates": [
           {
-            "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/front/zoomed/05_UnitedAthle500101_onman_front_base_whitebg.png?v=1674541546",
+            "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
             "orientation": "any",
             "template_id": 66379,
             "printfile_id": 1,
@@ -1501,7 +1503,7 @@ export const data = {
             "is_template_on_front": true
           },
           {
-            "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/front/zoomed/05_UnitedAthle500101_onman_front_base_whitebg.png?v=1674541546",
+            "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
             "orientation": "any",
             "template_id": 66382,
             "printfile_id": 1,
@@ -1576,7 +1578,7 @@ export const data = {
             "is_template_on_front": true
           },
           {
-            "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/front/zoomed/05_UnitedAthle500101_onman_front_base_whitebg.png?v=1674541546",
+            "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
             "orientation": "any",
             "template_id": 66383,
             "printfile_id": 1,
@@ -1651,7 +1653,7 @@ export const data = {
             "is_template_on_front": true
           },
           {
-            "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/front/zoomed/05_UnitedAthle500101_onman_front_base_whitebg.png?v=1674541546",
+            "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
             "orientation": "any",
             "template_id": 66384,
             "printfile_id": 1,
@@ -1726,7 +1728,7 @@ export const data = {
             "is_template_on_front": true
           },
           {
-            "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/front/zoomed/05_UnitedAthle500101_onman_front_base_whitebg.png?v=1674541546",
+            "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
             "orientation": "any",
             "template_id": 66381,
             "printfile_id": 1,
@@ -1801,7 +1803,7 @@ export const data = {
             "is_template_on_front": true
           },
           {
-            "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/front/zoomed/05_UnitedAthle500101_onman_front_base_whitebg.png?v=1674541546",
+            "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
             "orientation": "any",
             "template_id": 66380,
             "printfile_id": 1,
@@ -1876,7 +1878,7 @@ export const data = {
             "is_template_on_front": true
           },
           {
-            "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/front/zoomed/05_UnitedAthle500101_onman_front_base_whitebg.png?v=1674541546",
+            "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
             "orientation": "any",
             "template_id": 66385,
             "printfile_id": 1,
@@ -1980,6 +1982,7 @@ export const data = {
           },
           {
             "color": "Navy",
+            "color_code": "#333366",
             "templates": [
               {
                 "placement": "front",
@@ -2006,6 +2009,7 @@ export const data = {
           },
           {
             "color": "Red",
+            "color_code": "#CC3333",
             "templates": [
               {
                 "placement": "front",
@@ -3273,6 +3277,7 @@ export const responseData = {
         "variant_id": 8628
       },
       {
+        "color_code": "#333366",
         "color": "Navy",
         "templates": [
           {
@@ -3296,6 +3301,7 @@ export const responseData = {
       },
       {
         "color": "Red",
+        "color_code": "#CC3333",
         "templates": [
           {
             "placement": "front",
@@ -4043,6 +4049,1221 @@ export const responseData = {
     "external_id": "336278695",
     "metadata": {
       "printful_id": 336278695
+    },
+    "style": null,
+    "isAddShippingProfile": false,
+    "isSyncFeedForGoogleMerchant": false,
+    "domain": null,
+    "rating": 0,
+    "wooProductId": null,
+    "syncToMerchant": true,
+    "soldCount": 0,
+    "sizeGuideId": null
+  }
+}
+
+export const responseData2 = {
+  "id": 7,
+  "productId": "prod_01HQ7YMAKKF8FYD40EZZRM5CDH",
+  "templateData": {
+    "min_dpi": 75,
+    "version": 100,
+    "templates": [
+      {
+        "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
+        "orientation": "any",
+        "template_id": 66379,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 751,
+        "template_width": 3000,
+        "print_area_left": 1069,
+        "template_height": 3000,
+        "background_color": "#050505",
+        "print_area_width": 866,
+        "print_area_height": 1155,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
+        "orientation": "any",
+        "template_id": 66393,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 576,
+        "template_width": 3000,
+        "print_area_left": 1021,
+        "template_height": 3000,
+        "background_color": "#050505",
+        "print_area_width": 918,
+        "print_area_height": 1225,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66456,
+        "printfile_id": 90,
+        "background_url": null,
+        "print_area_top": 187,
+        "template_width": 560,
+        "print_area_left": 137,
+        "template_height": 560,
+        "background_color": "#050505",
+        "print_area_width": 288,
+        "print_area_height": 288,
+        "is_template_on_front": false
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/left/zoomed/05_UnitedAthle500101_onman_left_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66414,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 763,
+        "template_width": 1500,
+        "print_area_left": 695,
+        "template_height": 1500,
+        "background_color": "#050505",
+        "print_area_width": 401,
+        "print_area_height": 351,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/right/zoomed/05_UnitedAthle500101_onman_right_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66428,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 773,
+        "template_width": 1500,
+        "print_area_left": 344,
+        "template_height": 1500,
+        "background_color": "#050505",
+        "print_area_width": 400,
+        "print_area_height": 350,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
+        "orientation": "any",
+        "template_id": 66382,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 751,
+        "template_width": 3000,
+        "print_area_left": 1069,
+        "template_height": 3000,
+        "background_color": "#0a091a",
+        "print_area_width": 866,
+        "print_area_height": 1155,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/back/zoomed/05_UnitedAthle500101_onman_back_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66396,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 576,
+        "template_width": 3000,
+        "print_area_left": 1021,
+        "template_height": 3000,
+        "background_color": "#0a091a",
+        "print_area_width": 918,
+        "print_area_height": 1225,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66459,
+        "printfile_id": 90,
+        "background_url": null,
+        "print_area_top": 187,
+        "template_width": 560,
+        "print_area_left": 137,
+        "template_height": 560,
+        "background_color": "#0a091a",
+        "print_area_width": 288,
+        "print_area_height": 288,
+        "is_template_on_front": false
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/left/zoomed/05_UnitedAthle500101_onman_left_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66417,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 763,
+        "template_width": 1500,
+        "print_area_left": 695,
+        "template_height": 1500,
+        "background_color": "#0a091a",
+        "print_area_width": 401,
+        "print_area_height": 351,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/right/zoomed/05_UnitedAthle500101_onman_right_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66431,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 773,
+        "template_width": 1500,
+        "print_area_left": 344,
+        "template_height": 1500,
+        "background_color": "#0a091a",
+        "print_area_width": 400,
+        "print_area_height": 350,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
+        "orientation": "any",
+        "template_id": 66383,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 751,
+        "template_width": 3000,
+        "print_area_left": 1069,
+        "template_height": 3000,
+        "background_color": "#bf0010",
+        "print_area_width": 866,
+        "print_area_height": 1155,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/back/zoomed/05_UnitedAthle500101_onman_back_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66397,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 576,
+        "template_width": 3000,
+        "print_area_left": 1021,
+        "template_height": 3000,
+        "background_color": "#bf0010",
+        "print_area_width": 918,
+        "print_area_height": 1225,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66460,
+        "printfile_id": 90,
+        "background_url": null,
+        "print_area_top": 187,
+        "template_width": 560,
+        "print_area_left": 137,
+        "template_height": 560,
+        "background_color": "#bf0010",
+        "print_area_width": 288,
+        "print_area_height": 288,
+        "is_template_on_front": false
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/left/zoomed/05_UnitedAthle500101_onman_left_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66418,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 763,
+        "template_width": 1500,
+        "print_area_left": 695,
+        "template_height": 1500,
+        "background_color": "#bf0010",
+        "print_area_width": 401,
+        "print_area_height": 351,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/right/zoomed/05_UnitedAthle500101_onman_right_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66432,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 773,
+        "template_width": 1500,
+        "print_area_left": 344,
+        "template_height": 1500,
+        "background_color": "#bf0010",
+        "print_area_width": 400,
+        "print_area_height": 350,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
+        "orientation": "any",
+        "template_id": 66384,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 751,
+        "template_width": 3000,
+        "print_area_left": 1069,
+        "template_height": 3000,
+        "background_color": "#003ac2",
+        "print_area_width": 866,
+        "print_area_height": 1155,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/back/zoomed/05_UnitedAthle500101_onman_back_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66398,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 576,
+        "template_width": 3000,
+        "print_area_left": 1021,
+        "template_height": 3000,
+        "background_color": "#003ac2",
+        "print_area_width": 918,
+        "print_area_height": 1225,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66461,
+        "printfile_id": 90,
+        "background_url": null,
+        "print_area_top": 187,
+        "template_width": 560,
+        "print_area_left": 137,
+        "template_height": 560,
+        "background_color": "#003ac2",
+        "print_area_width": 288,
+        "print_area_height": 288,
+        "is_template_on_front": false
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/left/zoomed/05_UnitedAthle500101_onman_left_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66419,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 763,
+        "template_width": 1500,
+        "print_area_left": 695,
+        "template_height": 1500,
+        "background_color": "#003ac2",
+        "print_area_width": 401,
+        "print_area_height": 351,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/right/zoomed/05_UnitedAthle500101_onman_right_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66433,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 773,
+        "template_width": 1500,
+        "print_area_left": 344,
+        "template_height": 1500,
+        "background_color": "#003ac2",
+        "print_area_width": 400,
+        "print_area_height": 350,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
+        "orientation": "any",
+        "template_id": 66381,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 751,
+        "template_width": 3000,
+        "print_area_left": 1069,
+        "template_height": 3000,
+        "background_color": "#bdb6b3",
+        "print_area_width": 866,
+        "print_area_height": 1155,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/back/zoomed/05_UnitedAthle500101_onman_back_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66395,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 576,
+        "template_width": 3000,
+        "print_area_left": 1021,
+        "template_height": 3000,
+        "background_color": "#bdb6b3",
+        "print_area_width": 918,
+        "print_area_height": 1225,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66458,
+        "printfile_id": 90,
+        "background_url": null,
+        "print_area_top": 187,
+        "template_width": 560,
+        "print_area_left": 137,
+        "template_height": 560,
+        "background_color": "#bdb6b3",
+        "print_area_width": 288,
+        "print_area_height": 288,
+        "is_template_on_front": false
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/left/zoomed/05_UnitedAthle500101_onman_left_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66416,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 763,
+        "template_width": 1500,
+        "print_area_left": 695,
+        "template_height": 1500,
+        "background_color": "#bdb6b3",
+        "print_area_width": 401,
+        "print_area_height": 351,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/right/zoomed/05_UnitedAthle500101_onman_right_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66430,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 773,
+        "template_width": 1500,
+        "print_area_left": 344,
+        "template_height": 1500,
+        "background_color": "#bdb6b3",
+        "print_area_width": 400,
+        "print_area_height": 350,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
+        "orientation": "any",
+        "template_id": 66380,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 751,
+        "template_width": 3000,
+        "print_area_left": 1069,
+        "template_height": 3000,
+        "background_color": "#dbc6b2",
+        "print_area_width": 866,
+        "print_area_height": 1155,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/back/zoomed/05_UnitedAthle500101_onman_back_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66394,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 576,
+        "template_width": 3000,
+        "print_area_left": 1021,
+        "template_height": 3000,
+        "background_color": "#dbc6b2",
+        "print_area_width": 918,
+        "print_area_height": 1225,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66457,
+        "printfile_id": 90,
+        "background_url": null,
+        "print_area_top": 187,
+        "template_width": 560,
+        "print_area_left": 137,
+        "template_height": 560,
+        "background_color": "#dbc6b2",
+        "print_area_width": 288,
+        "print_area_height": 288,
+        "is_template_on_front": false
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/left/zoomed/05_UnitedAthle500101_onman_left_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66415,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 763,
+        "template_width": 1500,
+        "print_area_left": 695,
+        "template_height": 1500,
+        "background_color": "#dbc6b2",
+        "print_area_width": 401,
+        "print_area_height": 351,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/right/zoomed/05_UnitedAthle500101_onman_right_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66429,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 773,
+        "template_width": 1500,
+        "print_area_left": 344,
+        "template_height": 1500,
+        "background_color": "#dbc6b2",
+        "print_area_width": 400,
+        "print_area_height": 350,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "05_UnitedAthle500101_onman_front_base_whitebg.webp",
+        "orientation": "any",
+        "template_id": 66385,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 751,
+        "template_width": 3000,
+        "print_area_left": 1069,
+        "template_height": 3000,
+        "background_color": "#ffffff",
+        "print_area_width": 866,
+        "print_area_height": 1155,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/back/zoomed/05_UnitedAthle500101_onman_back_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66399,
+        "printfile_id": 1,
+        "background_url": null,
+        "print_area_top": 576,
+        "template_width": 3000,
+        "print_area_left": 1021,
+        "template_height": 3000,
+        "background_color": "#ffffff",
+        "print_area_width": 918,
+        "print_area_height": 1225,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/templates/medium/outside_label_3x3.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66462,
+        "printfile_id": 90,
+        "background_url": null,
+        "print_area_top": 187,
+        "template_width": 560,
+        "print_area_left": 137,
+        "template_height": 560,
+        "background_color": "#ffffff",
+        "print_area_width": 288,
+        "print_area_height": 288,
+        "is_template_on_front": false
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/left/zoomed/05_UnitedAthle500101_onman_left_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66420,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 763,
+        "template_width": 1500,
+        "print_area_left": 695,
+        "template_height": 1500,
+        "background_color": "#ffffff",
+        "print_area_width": 401,
+        "print_area_height": 351,
+        "is_template_on_front": true
+      },
+      {
+        "image_url": "https://files.cdn.printful.com/m/United_Athle5001-01_tee/medium/mens/right/zoomed/05_UnitedAthle500101_onman_right_base_whitebg.png?v=1674541546",
+        "orientation": "any",
+        "template_id": 66434,
+        "printfile_id": 130,
+        "background_url": null,
+        "print_area_top": 773,
+        "template_width": 1500,
+        "print_area_left": 344,
+        "template_height": 1500,
+        "background_color": "#ffffff",
+        "print_area_width": 400,
+        "print_area_height": 350,
+        "is_template_on_front": true
+      }
+    ],
+    "variant_mapping": [
+      {
+        "color": "Black",
+        "templates": [
+          {
+            "placement": "front",
+            "template_id": 66379
+          },
+          {
+            "placement": "back",
+            "template_id": 66393
+          },
+          {
+            "placement": "label_outside",
+            "template_id": 66456
+          },
+          {
+            "placement": "sleeve_left",
+            "template_id": 66414
+          },
+          {
+            "placement": "sleeve_right",
+            "template_id": 66428
+          }
+        ],
+        "variant_id": 12515
+      },
+      {
+        "color_code": "#333366",
+        "color": "Navy",
+        "templates": [
+          {
+            "placement": "front",
+            "template_id": 66382
+          },
+          {
+            "placement": "back",
+            "template_id": 66396
+          },
+          {
+            "placement": "label_outside",
+            "template_id": 66459
+          },
+          {
+            "placement": "sleeve_left",
+            "template_id": 66417
+          },
+          {
+            "placement": "sleeve_right",
+            "template_id": 66431
+          }
+        ],
+        "variant_id": 12525
+      },
+      {
+        "color": "Red",
+        "color_code": "#CC3333",
+        "templates": [
+          {
+            "placement": "front",
+            "template_id": 66383
+          },
+          {
+            "placement": "back",
+            "template_id": 66397
+          },
+          {
+            "placement": "label_outside",
+            "template_id": 66460
+          },
+          {
+            "placement": "sleeve_left",
+            "template_id": 66418
+          },
+          {
+            "placement": "sleeve_right",
+            "template_id": 66432
+          }
+        ],
+        "variant_id": 12530
+      },
+      {
+        "color": "Royal Blue",
+        "templates": [
+          {
+            "placement": "front",
+            "template_id": 66384
+          },
+          {
+            "placement": "back",
+            "template_id": 66398
+          },
+          {
+            "placement": "label_outside",
+            "template_id": 66461
+          },
+          {
+            "placement": "sleeve_left",
+            "template_id": 66419
+          },
+          {
+            "placement": "sleeve_right",
+            "template_id": 66433
+          }
+        ],
+        "variant_id": 12535
+      },
+      {
+        "color": "Light Grey",
+        "templates": [
+          {
+            "placement": "front",
+            "template_id": 66381
+          },
+          {
+            "placement": "back",
+            "template_id": 66395
+          },
+          {
+            "placement": "label_outside",
+            "template_id": 66458
+          },
+          {
+            "placement": "sleeve_left",
+            "template_id": 66416
+          },
+          {
+            "placement": "sleeve_right",
+            "template_id": 66430
+          }
+        ],
+        "variant_id": 12520
+      },
+      {
+        "color": "Light Beige",
+        "templates": [
+          {
+            "placement": "front",
+            "template_id": 66380
+          },
+          {
+            "placement": "back",
+            "template_id": 66394
+          },
+          {
+            "placement": "label_outside",
+            "template_id": 66457
+          },
+          {
+            "placement": "sleeve_left",
+            "template_id": 66415
+          },
+          {
+            "placement": "sleeve_right",
+            "template_id": 66429
+          }
+        ],
+        "variant_id": 12553
+      },
+      {
+        "color": "White",
+        "templates": [
+          {
+            "placement": "front",
+            "template_id": 66385
+          },
+          {
+            "placement": "back",
+            "template_id": 66399
+          },
+          {
+            "placement": "label_outside",
+            "template_id": 66462
+          },
+          {
+            "placement": "sleeve_left",
+            "template_id": 66420
+          },
+          {
+            "placement": "sleeve_right",
+            "template_id": 66434
+          }
+        ],
+        "variant_id": 12545
+      }
+    ],
+    "conflicting_placements": [
+      {
+        "conflicts": [
+          "front_large",
+          "front_dtf",
+          "chest_left_dtf"
+        ],
+        "placement": "front"
+      },
+      {
+        "conflicts": [
+          "label_outside",
+          "back_dtf",
+          "back_large"
+        ],
+        "placement": "back"
+      },
+      {
+        "conflicts": [
+          "back",
+          "back_dtf",
+          "label_inside",
+          "label_inside_dtf"
+        ],
+        "placement": "label_outside"
+      },
+      {
+        "conflicts": [
+          "long_sleeve_left_dtf",
+          "short_sleeve_left_dtf"
+        ],
+        "placement": "sleeve_left"
+      },
+      {
+        "conflicts": [
+          "long_sleeve_right_dtf",
+          "short_sleeve_right_dtf"
+        ],
+        "placement": "sleeve_right"
+      }
+    ]
+  },
+  "printFileData": {
+    "options": [
+      "Back",
+      "Back 2",
+      "Front",
+      "Front 2",
+      "Left",
+      "Left Front",
+      "Outside label",
+      "Product detail",
+      "Right",
+      "Right Front"
+    ],
+    "printfiles": [
+      {
+        "dpi": 150,
+        "width": 1800,
+        "height": 2400,
+        "fill_mode": "fit",
+        "can_rotate": false,
+        "printfile_id": 1
+      },
+      {
+        "dpi": 150,
+        "width": 450,
+        "height": 450,
+        "fill_mode": "fit",
+        "can_rotate": false,
+        "printfile_id": 90
+      },
+      {
+        "dpi": 150,
+        "width": 600,
+        "height": 525,
+        "fill_mode": "fit",
+        "can_rotate": false,
+        "printfile_id": 130
+      }
+    ],
+    "product_id": 485,
+    "option_groups": [
+      "Flat",
+      "Flat 2",
+      "Labels",
+      "Men's",
+      "Men's 2",
+      "On Hanger",
+      "Product details",
+      "Women's",
+      "Women's 2"
+    ],
+    "variant_printfiles": [
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12515
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12516
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12517
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12518
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12519
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12525
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12526
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12527
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12528
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12529
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12530
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12531
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12532
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12533
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12534
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12535
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12536
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12537
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12538
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12539
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12520
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12521
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12522
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12523
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12524
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12553
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12554
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12555
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12556
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12557
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12545
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12546
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12547
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12548
+      },
+      {
+        "placements": {
+          "back": 1,
+          "front": 1,
+          "sleeve_left": 130,
+          "sleeve_right": 130,
+          "label_outside": 90
+        },
+        "variant_id": 12549
+      }
+    ],
+    "available_placements": {
+      "back": "Back print",
+      "front": "Front print",
+      "sleeve_left": "Left sleeve",
+      "sleeve_right": "Right sleeve",
+      "label_outside": "Outside label"
+    }
+  },
+  "metadata": {},
+  "externalId": "485",
+  "created_at": "2024-02-22T01:24:07.712Z",
+  "updated_at": "2024-02-22T01:24:07.712Z",
+  "product": {
+    "id": "prod_01HQ7YMAKKF8FYD40EZZRM5CDH",
+    "created_at": "2024-02-22T08:24:06.399Z",
+    "updated_at": "2024-02-22T15:08:31.804Z",
+    "deleted_at": null,
+    "title": "Adult quality tee",
+    "subtitle": null,
+    "description": null,
+    "handle": "adult-quality-tee",
+    "is_giftcard": false,
+    "status": "draft",
+    "thumbnail": "http://localhost:9000/uploads/e880bc343ab27cb903d663268499ebdf_preview.png",
+    "weight": null,
+    "length": null,
+    "height": null,
+    "width": null,
+    "hs_code": null,
+    "origin_country": null,
+    "mid_code": null,
+    "material": null,
+    "collection_id": null,
+    "type_id": null,
+    "discountable": true,
+    "external_id": "336386937",
+    "metadata": {
+      "printful_id": 336386937
     },
     "style": null,
     "isAddShippingProfile": false,
