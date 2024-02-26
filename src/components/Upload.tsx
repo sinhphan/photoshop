@@ -34,11 +34,12 @@ const Upload: FC<UploadProps> = ({ }) => {
           currentPrintArea.visible = false
         })
 
-
         canvas?.add(img)
         canvas?.requestRenderAll()
 
-        const newLayers: DESIGN.Layer[] = [...layers, {
+        const newLayers: DESIGN.Layer[] = [...layers]
+        newLayers.unshift({
+          id: layers?.length?.toString(),
           image: imageUrl,
           title: files[0]?.name,
           type: 'File',
@@ -46,7 +47,7 @@ const Upload: FC<UploadProps> = ({ }) => {
             file: files[0],
             object: img
           }
-        }]
+        })
 
         setLayers?.(newLayers);
         setConfig?.({ ...config, currentMenu: 'layer' });

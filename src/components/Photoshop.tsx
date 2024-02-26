@@ -1,14 +1,23 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { responseData2 } from "@/data/data";
 import './style.css'
 import { useDesign } from "@/hook/useDesign";
 import Layer from "./Layer";
 import Upload from "./Upload";
 import Text from "./Text";
+import { SortableContext, arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import { DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
+import { SortableItem } from "./SortableItem";
 
 export default function PhotoShop() {
-  const { addRect, config, setConfig, currentTemplateInfo, layers, currentPrintArea } = useDesign()
+  const { addRect, config, setConfig, currentTemplateInfo, layers, currentPrintArea, setLayers } = useDesign()
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
   const data = responseData2
   const [img, setImg] = useState<string>()
   const availablePlacements = Object.entries(data.printFileData.available_placements)
@@ -29,6 +38,25 @@ export default function PhotoShop() {
     //   quality: 0.8
     // })
     // setImg(dataUrl)
+  }
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    const oldIndex = layers.findIndex((layer) => layer.id === active?.id);
+    const newIndex = layers.findIndex((layer) => layer.id === over?.id);
+    if(newIndex > oldIndex){
+      for(let i = oldIndex; i < newIndex; i++){
+        layers[oldIndex]?.metadata?.object?.sendBackwards()
+      }
+    }else {
+      for(let i = newIndex; i < oldIndex; i++){
+        layers[oldIndex]?.metadata?.object?.bringForward()
+      }
+    }
+    const newLayers = arrayMove<DESIGN.Layer>(layers, oldIndex, newIndex);
+
+    setLayers?.(newLayers);
   }
 
   return <div className="design-main">
@@ -64,10 +92,19 @@ export default function PhotoShop() {
         </div>
 
         <div className="design-sidebar-content">
-          {config?.currentMenu === 'layer' && layers?.map((layer, i) => {
-            return <Layer layer={layer} key={layer?.title + i} />
-          })}
-
+          {config?.currentMenu === 'layer' &&
+            <DndContext
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext items={layers}>
+                {layers?.map((layer) => {
+                  return <SortableItem key={layer.id} id={layer.id}>
+                    <Layer layer={layer} />
+                  </SortableItem>
+                })}
+              </SortableContext>
+            </DndContext>
+          }
           {config?.currentMenu === 'upload' && <Upload />}
           {config?.currentMenu === 'text' && <Text />}
         </div>

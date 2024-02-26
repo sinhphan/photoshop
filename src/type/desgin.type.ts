@@ -1,5 +1,6 @@
 declare namespace DESIGN {
   type Layer = {
+    id: string;
     type: string;
     title: string;
     width?: number;
