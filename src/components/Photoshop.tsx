@@ -7,17 +7,19 @@ import Layer from "./Layer";
 import Upload from "./Upload";
 import Text from "./Text";
 import { SortableContext, arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import { DndContext, DragEndEvent, KeyboardSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
+import { DndContext, DragEndEvent, DragStartEvent, KeyboardSensor, MouseSensor, PointerSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { SortableItem } from "./SortableItem";
 
 export default function PhotoShop() {
-  const { addRect, config, setConfig, currentTemplateInfo, layers, currentPrintArea, setLayers } = useDesign()
+  const { addRect, config, setConfig, currentTemplateInfo, layers, currentPrintArea, setLayers, canvas } = useDesign()
   const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    })
-  );
+    useSensor(MouseSensor, {
+      onActivation: (event) => {console.log("onActivation", event)}, // Here!
+      activationConstraint: { distance: 5 },
+  }),useSensor(TouchSensor, {
+    onActivation: (event) => {console.log("onActivation", event)}, // Here!
+    activationConstraint: { distance: 5 },
+}))
   const data = responseData2
   const [img, setImg] = useState<string>()
   const availablePlacements = Object.entries(data.printFileData.available_placements)
@@ -58,7 +60,16 @@ export default function PhotoShop() {
 
     setLayers?.(newLayers);
   }
+  
 
+  const handleDragOver = (event: DragStartEvent) => {
+    const { active } = event;
+    const startIndex = layers.findIndex((layer) => layer.id === active?.id);
+    if (layers?.[startIndex]?.metadata?.object) {
+      canvas?.setActiveObject(layers[startIndex]?.metadata?.object as fabric.Object)
+    }
+  }
+  
   return <div className="design-main">
     <div className="design-container">
       <div className="design-sidebar" >
@@ -95,10 +106,12 @@ export default function PhotoShop() {
           {config?.currentMenu === 'layer' &&
             <DndContext
               onDragEnd={handleDragEnd}
+              onDragStart={handleDragOver}
+              sensors={sensors}
             >
-              <SortableContext items={layers}>
+              <SortableContext items={layers} >
                 {layers?.map((layer) => {
-                  return <SortableItem key={layer.id} id={layer.id}>
+                  return <SortableItem key={layer.id} id={layer.id} data-id={layer.id}>
                     <Layer layer={layer} />
                   </SortableItem>
                 })}

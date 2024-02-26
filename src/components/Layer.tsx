@@ -6,7 +6,6 @@ type Layer = {
 };
 
 const Layer: FC<Layer> = ({ layer }) => {
-  const { setLayers } = useDesign()
 
   return (<div className="design-sidebar-layer">
     <div className="design-sidebar-left">
