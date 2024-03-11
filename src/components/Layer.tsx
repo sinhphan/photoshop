@@ -26,8 +26,8 @@ const Layer: FC<Layer> = ({ layer }) => {
       </p> */}
     </div>
     <div className="design-sidebar-right">
-      <button className="layer-menu-btn">
-        <i className="fa-solid fa-ellipsis-vertical"></i>
+      <button className="layer-menu-btn" onClick={()=>{ console.log('click') }}>
+        <i className="fa-solid fa-trash"></i>
       </button>
     </div>
   </div>)
