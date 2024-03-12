@@ -6,10 +6,28 @@ import LayerItem from "./LayerItem";
 type DragDropLayerProps = {};
 
 const DragDropLayer: FC<DragDropLayerProps> = ({ }) => {
-  const { layers, setLayers } = useDesign1();
+  const { layers, setLayers, canvas } = useDesign1();
 
   const moveLayer = useCallback((dragIndex: number, hoverIndex: number) => {
-    setLayers?.((prevLayers:DESIGN.Layer[])=> {
+    setLayers?.((prevLayers: DESIGN.Layer[]) => {
+      const dragLayer = layers[dragIndex];
+      const hoverLayer = layers[hoverIndex];
+      let dragObject = {} as fabric.Object;
+      let hoverObject = {} as fabric.Object;
+      canvas?.getObjects()?.forEach((obj) => {
+        if (obj?.name === dragLayer.id) { dragObject = obj; }
+        if (obj?.name === hoverLayer.id) { hoverObject = obj }
+      })
+      if (dragIndex > hoverIndex) {
+        for (let i = hoverIndex; i < dragIndex; i++) {
+          dragObject.bringForward()
+        }
+      } else if (dragIndex < hoverIndex) {
+        for (let i = dragIndex; i < hoverIndex; i++) {
+          dragObject?.sendBackwards()
+        }
+      }
+      canvas?.renderAll()
       const updatedLayers = update(prevLayers, {
         $splice: [
           [dragIndex, 1],
@@ -17,8 +35,8 @@ const DragDropLayer: FC<DragDropLayerProps> = ({ }) => {
         ],
       }) as DESIGN.Layer[];
       return updatedLayers;
-    } );
-  }, []);
+    });
+  }, [layers]);
 
   const renderCard = useCallback(
     (layer: DESIGN.Layer, index: number) => {

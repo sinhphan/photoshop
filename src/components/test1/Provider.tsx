@@ -30,6 +30,7 @@ export type Design1ContextType = {
   createRootCanvas?: (mm: number, ppt: number) => void
   histories?: Histories;
   addImageLayer?: (url?: string, c?: any, currentTemplate?: any) => void
+  addTextLayer?: () => void
 }
 
 export const Design1Context = createContext<Design1ContextType>({
@@ -45,10 +46,12 @@ export const Design1Context = createContext<Design1ContextType>({
 
 const Design1Provider = ({ children }: { children: ReactElement }) => {
   const [layers, setLayers] = useState<DESIGN.Layer[]>([])
-  console.log("🚀 => Design1Provider => layers:", layers)
   const [template, setTemplate] = useState<TemplateType>()
   const [currentLayer, setCurrentLayer] = useState<DESIGN.Layer>()
   const [histories, setHistories] = useState<Histories>({ current: 0, data: [] })
+  console.log("🚀 => Design1Provider => histories:", histories)
+  const [currentIndexAdded, setCurrentIndexAdded] = useState<number>(0)
+  const [adding, setAdding] = useState(false);
   const [config, setConfig] = useState({
     color: 'Black',
     placement: 'front',
@@ -56,17 +59,19 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
     zoom: 0,
     currentMenu: 'layer'
   })
-
   const [canvas, setCanvas] = useState<fabric.Canvas>()
-  const loadState = (json: any) => {
-    canvas?.loadFromJSON(json, function () {
+
+  const loadState = (data: any) => {
+    canvas?.loadFromJSON(data?.canvas, function () {
       canvas.getObjects()?.forEach((obj, i) => {
-        obj.name = i.toString()
+        obj.name = layers[i].id
       })
       canvas?.renderAll();
       setCanvas(canvas);
+      setLayers(data?.layers)
     });
   }
+
   const undo = () => {
     if (histories.current > 0) {
       const current = histories.current - 1;
@@ -84,8 +89,12 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
   }
 
   const addImageLayer = (url = "/instagram2.webp", c = canvas, currentTemplate = template) => {
+    setAdding(true);
+
+    const name = currentIndexAdded.toString()
+    setCurrentIndexAdded(currentIndexAdded + 1)
     const newLayer: DESIGN.Layer = {
-      id: layers?.length?.toString() || '0' ,
+      id: name,
       image: url,
       title: "Print area",
       metadata: {},
@@ -94,15 +103,39 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
       left: currentTemplate?.left,
     }
     fabric.Image.fromURL(url, (res) => {
-      const image = res.set({ name: "0", top: newLayer.top, left: newLayer.left });
-      newLayer.objectId = image.name
-      setLayers([...layers, newLayer])
+      const image = res.set({ name: name, top: newLayer.top, left: newLayer.left });
+      setLayers([newLayer, ...layers])
       c?.add(image);
       c?.renderAll()
       const newHistories = { ...histories }
-      newHistories.data.push(c?.toJSON());
+      newHistories.current = newHistories.data.length
+      newHistories.data.push({ canvas: c?.toJSON(), layers: [newLayer, ...layers] });
       setHistories(newHistories)
     })
+  }
+
+
+  const addTextLayer = () => {
+    setAdding(true);
+
+    const name = currentIndexAdded.toString()
+    setCurrentIndexAdded(currentIndexAdded + 1)
+    const newLayer: DESIGN.Layer = {
+      id: name,
+      image: "",
+      title: "Text area",
+      metadata: {},
+      type: 'text',
+      top: template?.top,
+      left: template?.left,
+    }
+    const text = new fabric.Text('Text area', { name, top: template?.top, left: template?.left })
+    setLayers([newLayer, ...layers])
+    const newHistories = { ...histories }
+    newHistories.current = newHistories.data.length
+    newHistories.data.push({ canvas: canvas?.toJSON(), layers: [newLayer, ...layers] });
+    setHistories(newHistories)
+    canvas?.add(text)
   }
 
   const createRootCanvas = (width: number, height: number, type = 'mm', ppt = 300) => {
@@ -156,26 +189,25 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
 
   useEffect(() => {
     canvas?.on('object:modified', () => {
-      setCanvas(canvas);
+      console.log("🚀 => canvas?.on => object:modified:", "object:modified")
       const newHistories = { ...histories }
       newHistories.data = newHistories?.data?.slice(0, histories.current + 1)
       if (histories?.data?.length < 10) {
         newHistories.current = newHistories.data.length;
-        newHistories.data.push(canvas?.toJSON());
-        setHistories(newHistories);
+        newHistories.data.push({ canvas: canvas?.toJSON(), layers: layers });
       } else {
         newHistories?.data?.shift();
-        newHistories.data?.push(canvas?.toJSON());
-        setHistories(newHistories);
+        newHistories.data?.push({ canvas: canvas?.toJSON(), layers: layers });
       }
+      setHistories(newHistories);
+      setCanvas(canvas);
     })
-  }, [histories])
+  }, [histories, layers])
 
   useEffect(() => {
     canvas?.on('selection:created', (e) => {
       const selected = e.selected?.[0]
-      console.log("🚀 => canvas?.on => selected:", selected)
-      const layer = layers?.find(l => l?.objectId === selected?.name)
+      const layer = layers?.find(l => l?.id === selected?.name)
       setCurrentLayer(layer)
     })
   }, [layers])
@@ -183,7 +215,7 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
   useEffect(() => {
     canvas?.on('selection:cleared', (e) => {
       const deselected = e.deselected?.[0]
-      if (currentLayer?.objectId === deselected?.name) {
+      if (currentLayer?.id === deselected?.name) {
         setCurrentLayer?.(undefined);
       }
     })
@@ -192,7 +224,7 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
   useEffect(() => {
     canvas?.on('selection:updated', (e) => {
       const selected = e.selected?.[0]
-      const layer = layers?.find(l => l?.objectId === selected?.name)
+      const layer = layers?.find(l => l?.id === selected?.name)
       setCurrentLayer(layer)
     })
   }, [layers])
@@ -201,7 +233,8 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
       layers: layers, setLayers, config, setConfig, canvas, setCanvas,
       currentLayer, setCurrentLayer, createRootCanvas, histories: { ...histories, undo, redo },
       template,
-      addImageLayer
+      addImageLayer,
+      addTextLayer
     }}>
       {children}
     </Design1Context.Provider>

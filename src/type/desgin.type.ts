@@ -6,7 +6,6 @@ declare namespace DESIGN {
     top?: number;
     left?: number;
     image: string;
-    objectId?: string;
     metadata: {
       file?: File,
       object?: fabric.Object

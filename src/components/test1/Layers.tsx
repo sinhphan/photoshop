@@ -7,7 +7,7 @@ import DragDropLayer from "./DragDropLayer";
 type LayersProps = {};
 
 const Layers: FC<LayersProps> = ({ }) => {
-  const { histories , addImageLayer} = useDesign1()
+  const { histories , addImageLayer, addTextLayer} = useDesign1()
   const handleUndo = ()=>{
     histories?.undo?.()
   }
@@ -16,15 +16,19 @@ const Layers: FC<LayersProps> = ({ }) => {
     histories?.redo?.()
   }
 
-  const handleAddLayer = ()=>{
+  const handleAddLayerImage = ()=>{
     addImageLayer?.()
+  }
+  const handleAddLayerText = ()=>{
+    addTextLayer?.()
   }
 
   return (<div className="w-full border">
     <div className="border-b px-3 py-2 w-full flex justify-between">
       <p>Layers</p>
       <div className="flex gap-2">
-        <button onClick={handleAddLayer}>Add</button>
+        <button onClick={handleAddLayerImage}>Add Image</button>
+        <button onClick={handleAddLayerText}>Add Text</button>
         <button onClick={handleUndo}>undo</button>
         <button onClick={handleRedo}>redo</button>
       </div>

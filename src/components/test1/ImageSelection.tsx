@@ -80,10 +80,10 @@ const ImageSelection: FC<ImageSelectionProps> = ({ }) => {
   }
 
   const handleDeleteLayer = () => {
-    const newLayers = layers?.filter(layer => layer?.objectId !== currentLayer?.objectId);
+    const newLayers = layers?.filter(layer => layer?.id !== currentLayer?.id);
     setCurrentLayer?.()
     setLayers?.(newLayers)
-    const currentObject = canvas?.getObjects()?.find(obj => obj.name === currentLayer?.objectId)
+    const currentObject = canvas?.getObjects()?.find(obj => obj.name === currentLayer?.id)
     if (currentObject) { canvas?.remove(currentObject) }
   }
 
