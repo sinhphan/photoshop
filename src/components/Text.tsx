@@ -16,16 +16,16 @@ const Text: FC<TextProps> = ({ }) => {
     if (id === '-1') {
       const textCanvas = new fabric.Text(text, {
         fontSize: 30,
-        left: (currentTemplateInfo?.print_area_left || 0) * config.ratio,
-        top: (currentTemplateInfo?.print_area_top || 0) * config.ratio,
+        left: (currentTemplateInfo?.print_area_left || 0) * config.zoom,
+        top: (currentTemplateInfo?.print_area_top || 0) * config.zoom,
         fill: textConfig.color,
         textBackgroundColor: textConfig.background,
         clipPath: new fabric.Rect({
           absolutePositioned: true,
-          width: (currentTemplateInfo?.print_area_width || 0) * config.ratio,
-          height: (currentTemplateInfo?.print_area_height || 0) * config.ratio,
-          left: (currentTemplateInfo?.print_area_left || 0) * config.ratio,
-          top: (currentTemplateInfo?.print_area_top || 0) * config.ratio
+          width: (currentTemplateInfo?.print_area_width || 0) * config.zoom,
+          height: (currentTemplateInfo?.print_area_height || 0) * config.zoom,
+          left: (currentTemplateInfo?.print_area_left || 0) * config.zoom,
+          top: (currentTemplateInfo?.print_area_top || 0) * config.zoom
         }),
       })
       setId(layers?.length?.toString());
@@ -80,10 +80,10 @@ const Text: FC<TextProps> = ({ }) => {
   useEffect(() => {
     if (!currentPrintArea) {
       addRect?.({
-        width: (currentTemplateInfo?.print_area_width || 0) * config?.ratio,
-        height: (currentTemplateInfo?.print_area_height || 0) * config?.ratio,
-        left: (currentTemplateInfo?.print_area_left || 0) * config?.ratio,
-        top: (currentTemplateInfo?.print_area_top || 0) * config?.ratio
+        width: (currentTemplateInfo?.print_area_width || 0) * config?.zoom,
+        height: (currentTemplateInfo?.print_area_height || 0) * config?.zoom,
+        left: (currentTemplateInfo?.print_area_left || 0) * config?.zoom,
+        top: (currentTemplateInfo?.print_area_top || 0) * config?.zoom
       })
     }
   }, [])

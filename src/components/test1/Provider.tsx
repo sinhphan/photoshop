@@ -7,7 +7,7 @@ export type Design1ContextType = {
   layers: DESIGN.Layer[]
   config: DESIGN.Config
   setConfig?: (config: DESIGN.Config) => void
-  setLayers?: (layers: DESIGN.Layer[]) => void
+  setLayers?: (layers: any) => void
   canvas?: fabric.Canvas,
   setTemplate?: (mm: number, ppt: number) => void
 }
@@ -17,19 +17,22 @@ export const Design1Context = createContext<Design1ContextType>({
     color: 'Black',
     placement: 'front',
     color_code: '#000000',
-    ratio: 0.75,
+    zoom: 0,
     currentMenu: 'layer'
   },
   layers: [],
 })
 
 const Design1Provider = ({ children }: { children: ReactElement }) => {
-  const [layers, setLayers] = useState<DESIGN.Layer[]>([])
+  const [layers, setLayers] = useState<DESIGN.Layer[]>([
+    { id: '0', image: "", metadata: {}, title: "print Area", type: "react" },
+    { id: '1', image: "", metadata: {}, title: "print Area", type: "react" },
+  ])
   const [config, setConfig] = useState({
     color: 'Black',
     placement: 'front',
     color_code: '#000000',
-    ratio: 0.75,
+    zoom: 0,
     currentMenu: 'layer'
   })
 
@@ -39,13 +42,10 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
     if (window) {
       const container = window.document.getElementById("container-c");
       const canvasH = (container?.offsetHeight || 30) - 30;
-      console.log("🚀 => addTemplate => canvasH:", canvasH)
       const canvasW = (container?.offsetWidth || 30) - 30
-      console.log("🚀 => addTemplate => canvasW:", canvasW)
       const templateW = WHToPx(width, type, ppt);
       const templateH = WHToPx(height, type, ppt);
       const zoom = (canvasW / templateW > canvasH / templateH) ? canvasH / templateH : canvasW / templateW
-      console.log("🚀 => addTemplate => zoom:", zoom)
 
       const c = new fabric.Canvas("canvas", {
         height: canvasH,
@@ -71,20 +71,21 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
         var delta = opt.e.deltaY;
         var zoom = c.getZoom();
         zoom *= 0.999 ** delta;
-        console.log("🚀 => zoom:", zoom)
         if (zoom > 20) zoom = 20;
         if (zoom < 0.01) zoom = 0.01;
         c.zoomToPoint({ x: canvasW / 2, y: canvasH / 2 }, zoom);
+        setConfig({ ...config, zoom: zoom })
         opt.e.preventDefault();
         opt.e.stopPropagation();
       });
+      setConfig({ ...config, zoom: zoom })
       setCanvas(c)
     }
   }
 
   useEffect(() => {
     addTemplate(100, 50)
-  }, [window])
+  }, [])
   return (
     <Design1Context.Provider value={{ layers: layers, setLayers, config, setConfig, canvas }}>
       {children}

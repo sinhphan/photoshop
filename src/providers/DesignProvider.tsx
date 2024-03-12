@@ -1,3 +1,4 @@
+'use client'
 import { responseData2 } from "@/data/data";
 import { fabric } from 'fabric';
 import { ReactElement, createContext, useEffect, useRef, useState } from "react";
@@ -19,7 +20,7 @@ export const DesignContext = createContext<DesignContextType>({
     color: 'Black',
     placement: 'front',
     color_code: '#000000',
-    ratio: 0.75,
+    zoom: 0.75,
     currentMenu: 'layer'
   },
   layers: [],
@@ -31,7 +32,7 @@ const DesignProvider = ({ children }: { children: ReactElement }) => {
     color: 'Black',
     placement: 'front',
     color_code: '#000000',
-    ratio: 0.75,
+    zoom: 0.75,
     currentMenu: 'layer'
   })
   const data = responseData2
@@ -67,11 +68,12 @@ const DesignProvider = ({ children }: { children: ReactElement }) => {
     const templateInfo = templates?.find(t => t.template_id === currentTemplate?.template_id);
     setCurrentTemplateInfo(templateInfo);
     const currentRatio = 750 / (templateInfo?.template_width || 750);
-    setConfig({ ...config, ratio: currentRatio })
+    setConfig({ ...config, zoom: currentRatio })
     const c = new fabric.Canvas("canvas", {
       height: (templateInfo?.template_height || 1000) * currentRatio,
       width: (templateInfo?.template_width || 1000) * currentRatio,
       backgroundColor: config?.color_code,
+      
     });
 
     // settings for all canvas in the app

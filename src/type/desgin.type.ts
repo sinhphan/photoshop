@@ -16,7 +16,7 @@ declare namespace DESIGN {
     color: string;
     placement: string;
     color_code: string;
-    ratio: number;
+    zoom: number;
     currentMenu: string;
   }
 
