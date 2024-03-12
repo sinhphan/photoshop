@@ -7,7 +7,8 @@ const nextConfig = {
       canvas: "commonjs canvas",
     });
     return config;
-  }
+  },
+  reactStrictMode: false
 };
 
 export default nextConfig;

@@ -2,7 +2,6 @@ import { FC, useCallback } from "react";
 import { useDesign1 } from "./useDesign";
 import update from 'immutability-helper'
 import LayerItem from "./LayerItem";
-import Layer from "../Layer";
 
 type DragDropLayerProps = {};
 

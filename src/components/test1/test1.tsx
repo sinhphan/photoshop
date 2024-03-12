@@ -2,6 +2,7 @@
 import { FC } from "react";
 import { useDesign1 } from "./useDesign";
 import Layers from "./Layers";
+import LayerAction from "./LayerAction";
 
 type CreateCustomProductBaseProps = {
   open: boolean,
@@ -18,8 +19,9 @@ const CreateCustomProductBase: FC<CreateCustomProductBaseProps> = ({ open, onOpe
         <div className="absolute border p-3 bottom-5 right-5 w-[80px] text-center bg-white font-bold">{(config.zoom * 100).toFixed(0)} %</div>
       </div>
 
-      <div className="w-full p-5">
+      <div className="w-full p-5 flex gap-5 flex-col items-start ">
         <Layers />
+        <LayerAction />
       </div>
     </div>)
 }

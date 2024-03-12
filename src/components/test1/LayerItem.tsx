@@ -1,6 +1,7 @@
 import { FC, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import type { Identifier, XYCoord } from 'dnd-core'
+import { useDesign1 } from "./useDesign";
 
 type LayerItemProps = {
   layer: DESIGN.Layer,
@@ -16,6 +17,7 @@ interface DragItem {
 
 
 const LayerItem: FC<LayerItemProps> = ({ index, layer, moveLayer }) => {
+  const { currentLayer, setCurrentLayer, canvas } = useDesign1()
   const ref = useRef<HTMLDivElement>(null)
   const [{ handlerId }, drop] = useDrop<
     DragItem,
@@ -91,10 +93,26 @@ const LayerItem: FC<LayerItemProps> = ({ index, layer, moveLayer }) => {
   const opacity = isDragging ? 0 : 1
   drag(drop(ref))
 
-  return <div ref={ref} style={{ opacity }} data-handler-id={handlerId} className="w-full px-3 py-2 bg-[#f1f1f1] border-b border-[#fff] hover:bg-[#e2e2e2] hover:cursor-pointer flex flex-wrap justify-between">
-    <div>{layer?.title}</div>
-    <div>ID {layer?.id}</div>
-  </div>
+  const handleOnclick = () => {
+    setCurrentLayer?.(layer);
+    const currentObject = canvas?.getObjects()?.find((obj)=> {
+      return obj?.name === layer?.objectId
+    })
+    if (currentObject) {
+      canvas?.setActiveObject(currentObject)
+      canvas?.renderAll()
+    } 
+  }
+
+  return (
+    <div
+      onClick={handleOnclick}
+      ref={ref} style={{ opacity }} data-handler-id={handlerId}
+      className="w-full px-3 py-2 bg-[#f1f1f1] border-b border-[#fff] hover:bg-[#e2e2e2] hover:cursor-pointer flex flex-wrap justify-between">
+      <div>{layer?.title}</div>
+      <div>ID {layer?.id}</div>
+    </div>
+  )
 }
 
 export default LayerItem
