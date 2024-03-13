@@ -10,7 +10,7 @@ type CreateCustomProductBaseProps = {
 };
 
 const CreateCustomProductBase: FC<CreateCustomProductBaseProps> = ({ open, onOpenChange }) => {
-  const { canvas, config } = useDesign1()
+  const { canvas, config, currentLayer } = useDesign1()
 
   return (
     <div className="w-full grid grid-cols-2 gap-4 h-screen">
@@ -21,7 +21,7 @@ const CreateCustomProductBase: FC<CreateCustomProductBaseProps> = ({ open, onOpe
 
       <div className="w-full p-5 flex gap-5 flex-col items-start ">
         <Layers />
-        <LayerAction />
+        {!!currentLayer && <LayerAction />}
       </div>
     </div>)
 }

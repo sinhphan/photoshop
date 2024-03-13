@@ -1,8 +1,10 @@
 import { fabric } from 'fabric';
 import { ReactElement, createContext, useEffect, useRef, useState } from "react";
 import { WHToPx } from "./convert";
+import FontFaceObserver from 'fontfaceobserver';
 
 export type TemplateType = {
+  title: string;
   width: number;
   height: number;
   top: number;
@@ -31,6 +33,7 @@ export type Design1ContextType = {
   histories?: Histories;
   addImageLayer?: (url?: string, c?: any, currentTemplate?: any) => void
   addTextLayer?: () => void
+  loadAndUseFont?: (e: string)=> void
 }
 
 export const Design1Context = createContext<Design1ContextType>({
@@ -98,6 +101,7 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
       image: url,
       title: "Print area",
       metadata: {},
+      optionType: "locked",
       type: 'image',
       top: currentTemplate?.top,
       left: currentTemplate?.left,
@@ -125,17 +129,33 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
       image: "",
       title: "Text area",
       metadata: {},
+      optionType: "locked",
       type: 'text',
       top: template?.top,
       left: template?.left,
     }
-    const text = new fabric.Text('Text area', { name, top: template?.top, left: template?.left })
+    const text = new fabric.Text('Text area', { name, top: template?.top, left: template?.left, fontFamily: "Open Sans" })
     setLayers([newLayer, ...layers])
     const newHistories = { ...histories }
     newHistories.current = newHistories.data.length
     newHistories.data.push({ canvas: canvas?.toJSON(), layers: [newLayer, ...layers] });
     setHistories(newHistories)
     canvas?.add(text)
+  }
+
+  const loadAndUseFont = (font: string) => {
+    var myfont = new FontFaceObserver(font)
+    myfont.load()
+      .then(()=>{
+        // when font is loaded, use it.
+        console.log(" font test");
+        (canvas?.getActiveObject() as fabric.Text)?.set("fontFamily", font);
+        canvas?.renderAll();
+      }).catch((e:any) => {
+        console.log("🚀 => .then => e:", e)
+        console.log(JSON.stringify(e))
+        alert('font loading failed ' + font);
+      });
   }
 
   const createRootCanvas = (width: number, height: number, type = 'mm', ppt = 300) => {
@@ -174,12 +194,30 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
         opt.e.preventDefault();
         opt.e.stopPropagation();
       });
-      const newTemplate = { width: templateW, height: templateH, top: templateTop, left: templateLeft }
+      const newTemplate = { width: templateW, height: templateH, top: templateTop, left: templateLeft, title: "Sample Template" }
       addImageLayer("/instagram2.webp", c, newTemplate)
 
       setConfig({ ...config, zoom: zoom })
       setCanvas(c)
       setTemplate(newTemplate)
+    }
+  }
+
+  const getSaveData = ()=>{
+    const objs = canvas?.getObjects()
+    const data = layers?.map(layer=>{
+      const obj = objs?.find(o=> o.name === layer?.id);
+      return {
+        ...layer,
+        metadata: {
+          ...layer.metadata,
+          object: obj
+        }
+      }
+    })
+    return {
+      template,
+      layers: data
     }
   }
 
@@ -234,7 +272,8 @@ const Design1Provider = ({ children }: { children: ReactElement }) => {
       currentLayer, setCurrentLayer, createRootCanvas, histories: { ...histories, undo, redo },
       template,
       addImageLayer,
-      addTextLayer
+      addTextLayer,
+      loadAndUseFont
     }}>
       {children}
     </Design1Context.Provider>

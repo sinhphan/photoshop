@@ -5,10 +5,12 @@ declare namespace DESIGN {
     title: string;
     top?: number;
     left?: number;
-    image: string;
+    image?: string;
+    optionType?: string;
     metadata: {
       file?: File,
       object?: fabric.Object
+      options?: any[]
     }
   }
 
